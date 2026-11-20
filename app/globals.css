@@ -1,26 +1,119 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #030d1a;
+  --foreground: #ffffff;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--background);
+  color: var(--foreground);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Lenis smooth scrolling rules */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Glassmorphism Classes for Tailwind CSS v4 */
+.glass-panel {
+  background-color: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(0, 20, 50, 0.18);
+}
+
+.glass-panel-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-hover:hover {
+  background-color: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.42);
+  box-shadow: 0 16px 40px 0 rgba(0, 30, 80, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Underwater Subsurface Glass */
+.glass-panel-subsurface {
+  background-color: rgba(7, 36, 54, 0.45);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  box-shadow: 0 16px 40px 0 rgba(0, 10, 25, 0.4);
+}
+
+/* Sunken Gold Glass Accent */
+.glass-panel-gold {
+  background-color: rgba(14, 28, 42, 0.58);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(245, 196, 81, 0.35);
+  box-shadow: 0 16px 40px 0 rgba(245, 196, 81, 0.12);
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes causticWave {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scaleY(0.9);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scaleY(1.3);
+  }
+}
+
+.animate-glow-dot {
+  animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+.animate-float-card {
+  animation: floatGentle 6s infinite ease-in-out;
+}
+
+.animate-caustic {
+  animation: causticWave 3s infinite ease-in-out;
 }
